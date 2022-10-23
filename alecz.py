@@ -18,15 +18,20 @@ handler.setFormatter(
 )
 logger.addHandler(handler)
 
+load_dotenv()
+
 help_command = commands.MinimalHelpCommand(
     no_category="List of commands", command_attrs={"hidden": True}
 )
+
+intents = discord.Intents.all()
 
 bot = commands.Bot(
     case_insensitive=True,
     command_prefix=commands.when_mentioned_or("a!"),
     activity=discord.Game(name="Looking for people to annoy"),
     help_command=help_command,
+    intents=intents,
 )  # , description=description
 
 stfu_words = ["talk", "vc"]
@@ -47,7 +52,7 @@ async def on_ready():
 
 
 @bot.command()
-#@commands.is_owner()
+# @commands.is_owner()
 async def annoy(ctx, id: int, count: int, interval: int, *, msg):
     for i in range(count):
         user_id = str(id)
@@ -122,7 +127,11 @@ async def on_command_error(ctx, error):
         await ctx.send(error)
 
 
-bot.load_extension("jishaku")
+async def main():
+    await bot.load_extension("jishaku")
 
-load_dotenv()
-bot.run(os.getenv("ALECZ_TOKEN"))
+    # await bot.run(os.getenv("ALECZ_TOKEN"))
+    await bot.start(os.getenv("ALECZ_TOKEN"))
+
+
+asyncio.run(main())
