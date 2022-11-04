@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from discord import app_commands
 from discord.ext.commands import has_permissions
 from dotenv import load_dotenv
 import os
@@ -7,6 +8,7 @@ import asyncio
 import random
 import time
 from datetime import datetime
+import re
 
 import logging
 
@@ -43,6 +45,7 @@ annoyed_response = [
     "pakyu",
     "PAKYU",
     "Don't bother me, I'm talking with my friends.",
+    "maabutan ka sakin",
 ]
 
 
@@ -51,14 +54,48 @@ async def on_ready():
     print("We have logged in as {0.user}".format(bot))
 
 
-@bot.command()
-# @commands.is_owner()
-async def annoy(ctx, id: int, count: int, interval: int, *, msg):
-    for i in range(count):
-        user_id = str(id)
-        user = await bot.fetch_user(id)
-        await ctx.send(f"<@{user_id}> {msg}")
-        await user.send(f"{msg}")
+# TODO: Optimize mentions (if still being developed) to avoid unnecessarily hitting rate limits
+@bot.hybrid_command()
+@app_commands.describe(count="No. of times to repeat the annoying message.")
+@app_commands.describe(
+    interval="Interval in seconds between the repeating annoying messages."
+)
+@app_commands.describe(
+    target="User that will be mention at the start of every annoying message. The user will also be DM'ed."
+)
+@app_commands.describe(message="The word/sentence/phrase to repeat.")
+async def annoy(
+    ctx,
+    count: commands.Range[int, 2, None],
+    interval: commands.Range[int, 1, None],
+    target: discord.Member,
+    *,
+    message,
+):
+    """Echo a word/sentence/phrase multiple times"""
+
+    #    mentions = [mention for mention in ctx.message.mentions]
+    #    if not mentions:
+    #        matches = re.findall(r"<@!?([0-9]{15,20})>", ctx.message)
+    #        mentions = [ctx.guild.get_member(int(match)) for match in matches]
+    #    print(message, mentions)  # debug
+
+    await ctx.reply("<:alecz:802600145681645578>")
+
+    channel = ctx.channel  # This line is necessary
+    sendable = True
+    for _ in range(count):
+        await channel.send(f"{target.mention} {message}")
+
+        # print(mentions)
+        if sendable:
+            try:
+                #                print("trying to send")
+                result = await target.send(message)
+            #                print(result)
+            except discord.HTTPException:
+                sendable = False
+
         await asyncio.sleep(interval)
 
 
