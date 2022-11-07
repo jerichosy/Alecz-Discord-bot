@@ -66,7 +66,7 @@ async def on_ready():
 @app_commands.describe(message="The word/sentence/phrase to repeat.")
 async def annoy(
     ctx,
-    count: commands.Range[int, 2, None],
+    count: commands.Range[int, 2, 86400],
     interval: commands.Range[int, 1, None],
     target: discord.Member,
     *,
