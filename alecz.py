@@ -1,16 +1,16 @@
-import discord
-from discord.ext import commands
-from discord import app_commands
-from discord.ext.commands import has_permissions
-from dotenv import load_dotenv
-import os
 import asyncio
+import logging
+import os
 import random
+import re
 import time
 from datetime import datetime
-import re
 
-import logging
+import discord
+from discord import app_commands
+from discord.ext import commands
+from discord.ext.commands import has_permissions
+from dotenv import load_dotenv
 
 logger = logging.getLogger("discord")
 logger.setLevel(logging.INFO)
@@ -66,9 +66,9 @@ async def on_ready():
 @app_commands.describe(message="The word/sentence/phrase to repeat.")
 async def annoy(
     ctx,
+    target: discord.Member,
     count: commands.Range[int, 2, 86400],
     interval: commands.Range[int, 1, None],
-    target: discord.Member,
     *,
     message,
 ):
