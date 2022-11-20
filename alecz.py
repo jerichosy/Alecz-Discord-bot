@@ -2,7 +2,6 @@ import asyncio
 import logging
 import os
 import random
-import re
 import time
 from datetime import datetime
 
@@ -34,7 +33,7 @@ bot = commands.Bot(
     activity=discord.Game(name="Looking for people to annoy"),
     help_command=help_command,
     intents=intents,
-)  # , description=description
+)
 
 stfu_words = ["talk", "vc"]
 
@@ -167,7 +166,6 @@ async def on_command_error(ctx, error):
 async def main():
     await bot.load_extension("jishaku")
 
-    # await bot.run(os.getenv("ALECZ_TOKEN"))
     await bot.start(os.getenv("ALECZ_TOKEN"))
 
 
