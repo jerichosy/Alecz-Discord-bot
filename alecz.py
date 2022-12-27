@@ -137,20 +137,19 @@ async def on_message(message):
     if message.author == bot.user:
         return
 
-    msg = message.content.lower()
-
     if bot.user.mentioned_in(message):
         await message.channel.send(random.choice(annoyed_response))
     elif message.mentions:
         for user in message.mentions:
-            if user.id == 766286898632851466:  # 766286898632851466
+            if (
+                user.id == 766286898632851466
+            ):  # 766286898632851466 (Alecz' Discord account)
+                msg = message.content.lower()
                 if any(word in msg for word in stfu_words):
                     await message.channel.send(random.choice(stfu_response))
-                else:
-                    # await message.channel.send(f"{msg} daw")
-                    pass
-                    # Doing it through DM as well might be too spammy
-                    # await user.send('{msg}')
+                # else:
+                #     await message.channel.send(f"{msg} daw")
+                #     await user.send('{msg}')  # Doing it through DM as well might be too spammy
 
     await bot.process_commands(message)
 
