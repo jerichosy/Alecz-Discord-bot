@@ -158,9 +158,9 @@ async def on_message(message):
 
 @bot.event
 async def on_command_error(ctx, error):
-    if isinstance(error, commands.errors.CommandNotFound):
-        pass
-    else:
+    # if isinstance(error, commands.errors.CommandNotFound):
+    #     pass
+    # else:
         await ctx.send(error)
 
 
