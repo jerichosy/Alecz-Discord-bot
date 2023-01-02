@@ -79,7 +79,7 @@ async def annoy(
                 #                print("trying to send")
                 result = await target.send(message)
             #                print(result)
-            except discord.HTTPException:
+            except (discord.HTTPException, AttributeError):
                 sendable = False
 
         await asyncio.sleep(interval)
