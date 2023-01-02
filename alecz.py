@@ -85,6 +85,29 @@ async def annoy(
         await asyncio.sleep(interval)
 
 
+# This is so dumb and annoying (thanks to Daniel and Jehu)
+@bot.hybrid_command()
+@app_commands.describe(count="No. of times to annoy @everyone.")
+@app_commands.describe(interval="Interval in minutes between the mentions.")
+async def everyone(
+    ctx, count: commands.Range[int, 2, 1440], interval: commands.Range[int, 1, None]
+):
+    """Mentions everyone but deletes it shortly afterwards leaving lingering 'phantom' mention notification"""
+
+    if ctx.interaction:
+        await ctx.interaction.response.send_message("<:alecz:802600145681645578>", ephemeral=True)
+    else:
+        await ctx.message.delete()
+
+    channel = ctx.channel
+
+    for _ in range(count):
+        await channel.send(
+            "@everyone", delete_after=2
+        )  # delete after 2 sec leaving a lingering "phantom" @everyone
+        await asyncio.sleep(60 * interval)
+
+
 @bot.command(hidden=True)
 @commands.is_owner()
 @commands.max_concurrency(1, per=BucketType.default, wait=False)
@@ -161,7 +184,7 @@ async def on_command_error(ctx, error):
     # if isinstance(error, commands.errors.CommandNotFound):
     #     pass
     # else:
-        await ctx.send(error)
+    await ctx.send(error)
 
 
 async def main():
