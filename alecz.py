@@ -89,13 +89,22 @@ async def annoy(
 @bot.hybrid_command()
 @app_commands.describe(count="No. of times to annoy @everyone.")
 @app_commands.describe(interval="Interval in minutes between the mentions.")
+@app_commands.describe(
+    easter_egg="Message that will be appended after the @everyone mention."
+)
 async def everyone(
-    ctx, count: commands.Range[int, 2, 1440], interval: commands.Range[int, 1, None]
+    ctx,
+    count: commands.Range[int, 2, 1440],
+    interval: commands.Range[int, 1, None],
+    *,
+    easter_egg=None,
 ):
     """Mentions everyone but deletes it shortly afterwards leaving lingering 'phantom' mention notification"""
 
     if ctx.interaction:
-        await ctx.interaction.response.send_message("<:alecz:802600145681645578>", ephemeral=True)
+        await ctx.interaction.response.send_message(
+            "<:alecz:802600145681645578>", ephemeral=True
+        )
     else:
         await ctx.message.delete()
 
@@ -103,7 +112,7 @@ async def everyone(
 
     for _ in range(count):
         await channel.send(
-            "@everyone", delete_after=2
+            f"@everyone {easter_egg if easter_egg else ''}", delete_after=2
         )  # delete after 2 sec leaving a lingering "phantom" @everyone
         await asyncio.sleep(60 * interval)
 
