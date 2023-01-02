@@ -9,6 +9,7 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 from discord.ext.commands import has_permissions
+from discord.ext.commands.cooldowns import BucketType
 from dotenv import load_dotenv
 
 logger = logging.getLogger("discord")
@@ -86,6 +87,7 @@ async def annoy(
 
 @bot.command(hidden=True)
 @commands.is_owner()
+@commands.max_concurrency(1, per=BucketType.default, wait=False)
 async def stillalive(ctx):
     interval_in_seconds = 60 * 10  # 10 mins
 
