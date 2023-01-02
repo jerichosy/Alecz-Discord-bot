@@ -47,7 +47,7 @@ async def on_ready():
     interval="Interval in seconds between the repeating annoying messages."
 )
 @app_commands.describe(
-    target="User that will be mention at the start of every annoying message. The user will also be DM'ed."
+    target="User that will be mentioned at the start of every annoying message. The user will also be DM'ed."
 )
 @app_commands.describe(message="The word/sentence/phrase to repeat.")
 async def annoy(
