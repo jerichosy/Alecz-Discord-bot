@@ -1,3 +1,5 @@
-/.env
-/discord.log
-/nohup.out
+__pycache__/
+venv/
+discord.log
+nohup.out
+.env
