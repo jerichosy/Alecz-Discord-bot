@@ -25,27 +25,13 @@ help_command = commands.MinimalHelpCommand(
     no_category="List of commands", command_attrs={"hidden": True}
 )
 
-intents = discord.Intents.all()
-
 bot = commands.Bot(
     case_insensitive=True,
     command_prefix=commands.when_mentioned_or("a!"),
     activity=discord.Game(name="Looking for people to annoy"),
     help_command=help_command,
-    intents=intents,
+    intents=discord.Intents.all(),
 )
-
-stfu_words = ["talk", "vc"]
-
-stfu_response = ["Shut the fuck up", "I'm tired"]
-
-annoyed_response = [
-    "What's your problem?",
-    "pakyu",
-    "PAKYU",
-    "Don't bother me, I'm talking with my friends.",
-    "maabutan ka sakin",
-]
 
 
 @bot.event
@@ -101,11 +87,13 @@ async def annoy(
 @bot.command(hidden=True)
 @commands.is_owner()
 async def stillalive(ctx):
-    while True:
+    interval_in_seconds = 60 * 10  # 10 mins
+
+    for _ in range(86400 // interval_in_seconds):
         now = datetime.now()
         current_time = now.strftime("%H:%M:%S")
         await ctx.send(f"{current_time} still alive")
-        await asyncio.sleep(600)
+        await asyncio.sleep(interval_in_seconds)
 
 
 @bot.command()
@@ -136,6 +124,18 @@ async def shutdown(ctx):
 async def on_message(message):
     if message.author == bot.user:
         return
+
+    stfu_words = ["talk", "vc"]
+
+    stfu_response = ["Shut the fuck up", "I'm tired"]
+
+    annoyed_response = [
+        "What's your problem?",
+        "pakyu",
+        "PAKYU",
+        "Don't bother me, I'm talking with my friends.",
+        "maabutan ka sakin",
+    ]
 
     if bot.user.mentioned_in(message):
         await message.channel.send(random.choice(annoyed_response))
