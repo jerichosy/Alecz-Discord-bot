@@ -141,12 +141,6 @@ async def ping(ctx):
     )
 
 
-@bot.command(aliases=["code", "showcode", "sc"])
-async def sourcecode(ctx):
-    """Have the bot upload it's own sourcecode here in Discord"""
-    await ctx.send(file=discord.File("alecz.py"))
-
-
 @bot.command(aliases=["close", "shutup", "logoff", "stop"])
 @has_permissions(administrator=True)
 async def shutdown(ctx):
