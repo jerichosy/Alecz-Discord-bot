@@ -22,22 +22,32 @@ logger.addHandler(handler)
 
 load_dotenv()
 
+
+class AleczBot(commands.Bot):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.INVITE_LINK = discord.utils.oauth_url(
+            client_id=self.application_id, permissions=discord.Permissions.advanced()
+        )
+
+    async def on_ready():
+        print("We have logged in as {0.user}".format(bot))
+
+
 help_command = commands.MinimalHelpCommand(
     no_category="List of commands", command_attrs={"hidden": True}
 )
 
-bot = commands.Bot(
+bot = AleczBot(
     case_insensitive=True,
     command_prefix=commands.when_mentioned_or("a!"),
     activity=discord.Game(name="Looking for people to annoy"),
-    help_command=help_command,
     intents=discord.Intents.all(),
+    owner_id=298454523624554501,
+    application_id=912346709634457672,
+    help_command=help_command,
 )
-
-
-@bot.event
-async def on_ready():
-    print("We have logged in as {0.user}".format(bot))
 
 
 # TODO: Optimize mentions (if still being developed) to avoid unnecessarily hitting rate limits
@@ -117,17 +127,10 @@ async def everyone(
         await asyncio.sleep(60 * interval)
 
 
-@bot.command(hidden=True)
-@commands.is_owner()
-@commands.max_concurrency(1, per=BucketType.default, wait=False)
-async def stillalive(ctx):
-    interval_in_seconds = 60 * 10  # 10 mins
-
-    for _ in range(86400 // interval_in_seconds):
-        now = datetime.now()
-        current_time = now.strftime("%H:%M:%S")
-        await ctx.send(f"{current_time} still alive")
-        await asyncio.sleep(interval_in_seconds)
+@bot.hybrid_command()
+async def invite(ctx):
+    """Add The Annoying Bot to your server!"""
+    await ctx.send(bot.INVITE_LINK)
 
 
 @bot.command()
@@ -146,6 +149,19 @@ async def ping(ctx):
 async def shutdown(ctx):
     await ctx.send("🛑 Shutting down!")
     await bot.close()
+
+
+@bot.command(hidden=True)
+@commands.is_owner()
+@commands.max_concurrency(1, per=BucketType.default, wait=False)
+async def stillalive(ctx):
+    interval_in_seconds = 60 * 10  # 10 mins
+
+    for _ in range(86400 // interval_in_seconds):
+        now = datetime.now()
+        current_time = now.strftime("%H:%M:%S")
+        await ctx.send(f"{current_time} still alive")
+        await asyncio.sleep(interval_in_seconds)
 
 
 @bot.event
