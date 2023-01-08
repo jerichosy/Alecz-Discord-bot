@@ -150,7 +150,7 @@ async def shutdown(ctx):
 
 @bot.event
 async def on_message(message):
-    if message.author == bot.user:
+    if message.author.bot:
         return
 
     stfu_words = ["talk", "vc"]
