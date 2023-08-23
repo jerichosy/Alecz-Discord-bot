@@ -62,7 +62,7 @@ bot = AleczBot(
 @app_commands.describe(message="The word/sentence/phrase to repeat.")
 async def annoy(
     ctx,
-    target: discord.Member,
+    target: discord.User,
     count: commands.Range[int, 2, 86400],
     interval: commands.Range[int, 1, None],
     *,
