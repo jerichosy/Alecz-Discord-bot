@@ -81,6 +81,7 @@ async def annoy(
     channel = ctx.channel  # This line is necessary
     sendable = True
     for _ in range(count):
+        elapsed = time.time()
         await channel.send(f"{target.mention} {message}")
 
         # print(mentions)
@@ -92,7 +93,12 @@ async def annoy(
             except (discord.HTTPException, AttributeError):
                 sendable = False
 
-        await asyncio.sleep(interval)
+        elapsed = time.time() - elapsed
+        new_interval = interval - elapsed
+        # print(new_interval)
+
+        if new_interval > 0:
+            await asyncio.sleep(new_interval)
 
 
 # This is so dumb and annoying (thanks to Daniel and Jehu)
