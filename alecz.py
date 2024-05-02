@@ -31,8 +31,9 @@ class AleczBot(commands.Bot):
             client_id=self.application_id, permissions=discord.Permissions.advanced()
         )
 
-    async def on_ready():
-        print("We have logged in as {0.user}".format(bot))
+    async def on_ready(self):
+        print(f"Logged in as {self.user} (ID: {self.user.id})")
+        print("------")
 
 
 help_command = commands.MinimalHelpCommand(
