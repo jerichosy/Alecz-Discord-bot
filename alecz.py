@@ -188,7 +188,7 @@ async def on_message(message):
         "maabutan ka sakin",
     ]
 
-    if bot.user.mentioned_in(message):
+    if bot.user.mentioned_in(message) and not message.mention_everyone:
         await message.channel.send(random.choice(annoyed_response))
     elif message.mentions:
         for user in message.mentions:
