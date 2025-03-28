@@ -158,19 +158,6 @@ async def shutdown(ctx):
     await bot.close()
 
 
-@bot.command(hidden=True)
-@commands.is_owner()
-@commands.max_concurrency(1, per=BucketType.default, wait=False)
-async def stillalive(ctx):
-    interval_in_seconds = 60 * 10  # 10 mins
-
-    for _ in range(86400 // interval_in_seconds):
-        now = datetime.now()
-        current_time = now.strftime("%H:%M:%S")
-        await ctx.send(f"{current_time} still alive")
-        await asyncio.sleep(interval_in_seconds)
-
-
 @bot.event
 async def on_message(message):
     if message.author.bot:
