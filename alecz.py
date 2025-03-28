@@ -152,9 +152,11 @@ async def ping(ctx):
 
 
 @bot.command(aliases=["close", "shutup", "logoff", "stop"])
-@has_permissions(administrator=True)
+# Someone who can delete other people's message should be able to shutdown this bot even if it impacts others
+# It's okay for now that it impacts others as there's no way to cancel running tasks (cmds)
+@has_permissions(manage_messages=True)
 async def shutdown(ctx):
-    await ctx.send("🛑 Shutting down!")
+    await ctx.send("🛑 Globally shutting down!")
     await bot.close()
 
 
