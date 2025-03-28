@@ -143,9 +143,9 @@ async def invite(ctx):
 @bot.command()
 async def ping(ctx):
     """Get the bot's current websocket and API latency"""
-    start_time = time.time()
+    start_time = time.perf_counter()
     to_edit = await ctx.send("Testing ping...")
-    end_time = time.time()
+    end_time = time.perf_counter()
     await to_edit.edit(
         content=f"Pong! {round(bot.latency * 1000)}ms | API: {round((end_time - start_time) * 1000)}ms"
     )
