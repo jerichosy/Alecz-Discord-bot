@@ -27,12 +27,19 @@ class AleczBot(commands.Bot):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+        permissions = discord.Permissions.text()
+        permissions.update(
+            # manage_messages=False,  # comment out for flash cmd ephmeral effect for traditional cmd to work in everyone cmd
+            manage_threads=False,  # factory method discord.Permissions.text() override
+            manage_webhooks=True,  # other override
+        )
         self.INVITE_LINK = discord.utils.oauth_url(
-            client_id=self.application_id, permissions=discord.Permissions.advanced()
+            client_id=self.application_id, permissions=permissions
         )
 
     async def on_ready(self):
         print(f"Logged in as {self.user} (ID: {self.user.id})")
+        print(f"Invite link: {self.INVITE_LINK}")
         print("------")
 
 
@@ -45,13 +52,12 @@ bot = AleczBot(
     command_prefix=commands.when_mentioned_or("a!"),
     activity=discord.Game(name="Looking for people to annoy"),
     intents=discord.Intents.all(),
-    owner_id=298454523624554501,
-    application_id=912346709634457672,
+    owner_id=298454523624554501,  # ! Hardcoded section
+    application_id=912346709634457672,  # ! Hardcoded section
     help_command=help_command,
 )
 
 
-# TODO: Optimize mentions (if still being developed) to avoid unnecessarily hitting rate limits
 @bot.hybrid_command()
 @app_commands.describe(count="No. of times to repeat the annoying message.")
 @app_commands.describe(
@@ -64,37 +70,35 @@ bot = AleczBot(
 async def annoy(
     ctx,
     target: discord.User,
-    count: commands.Range[int, 2, 86400],
+    count: commands.Range[
+        int, 2, 86400
+    ],  # Makes sure that at max rate (every sec), it only lasts for a day
     interval: commands.Range[int, 1, None],
     *,
     message,
 ):
     """Echo a word/sentence/phrase multiple times"""
 
-    #    mentions = [mention for mention in ctx.message.mentions]
-    #    if not mentions:
-    #        matches = re.findall(r"<@!?([0-9]{15,20})>", ctx.message)
-    #        mentions = [ctx.guild.get_member(int(match)) for match in matches]
-    #    print(message, mentions)  # debug
-
-    await ctx.reply("<:alecz:802600145681645578>")
+    await ctx.reply("<:alecz:802600145681645578>", mention_author=False)
 
     channel = ctx.channel  # This line is necessary
-    sendable = True
+    dm_sendable = True
     for _ in range(count):
-        elapsed = time.time()
+        elapsed = time.perf_counter()
         await channel.send(f"{target.mention} {message}")
 
         # print(mentions)
-        if sendable:
+        if dm_sendable:
             try:
                 #                print("trying to send")
                 result = await target.send(message)
             #                print(result)
-            except (discord.HTTPException, AttributeError):
-                sendable = False
+            # bare exception since idk what errors might arise from DM-ing
+            except Exception as e:
+                dm_sendable = False
+                print(f"{dm_sendable=} for {target} | {e}")
 
-        elapsed = time.time() - elapsed
+        elapsed = time.perf_counter() - elapsed
         new_interval = interval - elapsed
         # print(new_interval)
 
@@ -111,10 +115,12 @@ async def annoy(
 )
 async def everyone(
     ctx,
-    count: commands.Range[int, 2, 1440],
+    count: commands.Range[
+        int, 2, 1440
+    ],  # Makes sure that at max rate (every min), it only lasts for a day
     interval: commands.Range[int, 1, None],
     *,
-    easter_egg=None,
+    easter_egg="",
 ):
     """Mentions everyone but deletes it shortly afterwards leaving lingering 'phantom' mention notification"""
 
@@ -123,13 +129,18 @@ async def everyone(
             "<:alecz:802600145681645578>", ephemeral=True
         )
     else:
-        await ctx.message.delete()
+        # Since invokved via traditional cmd, try to delete cmd invoker's message for same ephemeral effect as slash cmd.
+        try:
+            await ctx.message.delete()
+        except:
+            print("Could not delete cmd invoker's message in everyone cmd")
+            pass
 
     channel = ctx.channel
 
     for _ in range(count):
         await channel.send(
-            f"@everyone {easter_egg if easter_egg else ''}", delete_after=2
+            f"@everyone {easter_egg}", delete_after=2
         )  # delete after 2 sec leaving a lingering "phantom" @everyone
         await asyncio.sleep(60 * interval)
 
@@ -165,10 +176,9 @@ async def on_message(message):
     if message.author.bot:
         return
 
+    # ! Hardcoded section
     stfu_words = ["talk", "vc"]
-
     stfu_response = ["Shut the fuck up", "I'm tired"]
-
     annoyed_response = [
         "What's your problem?",
         "pakyu",
@@ -182,14 +192,12 @@ async def on_message(message):
     elif message.mentions:
         for user in message.mentions:
             if (
-                user.id == 766286898632851466
-            ):  # 766286898632851466 (Alecz' Discord account)
+                user.id == 766286898632851466  # ! Hardcoded section
+            ):  #          766286898632851466 (Alecz' Discord account)
                 msg = message.content.lower()
                 if any(word in msg for word in stfu_words):
                     await message.channel.send(random.choice(stfu_response))
-                # else:
-                #     await message.channel.send(f"{msg} daw")
-                #     await user.send('{msg}')  # Doing it through DM as well might be too spammy
+                break
 
     await bot.process_commands(message)
 
