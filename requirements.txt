@@ -18,7 +18,7 @@ attrs==23.2.0
     # via aiohttp
 braceexpand==0.1.7
     # via jishaku
-brotli==1.1.0
+brotli==1.2.0
     # via discord-py
 cffi==1.16.0
     # via pycares
