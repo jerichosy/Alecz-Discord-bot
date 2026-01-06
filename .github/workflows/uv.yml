@@ -25,15 +25,5 @@ jobs:
         with:
           enable-cache: true
 
-      - name: Set environment for branch
-        run: |
-          if [[ $GITHUB_REF_NAME == 'master' ]]; then
-              echo "UV_LOCKED=1" >> "$GITHUB_ENV"
-          fi
-
-      - name: Verify set environment variable
-        run: |
-          echo $UV_LOCKED
-
       - name: Install the project
-        run: uv sync --all-extras --dev
+        run: uv sync --locked --all-extras --dev
