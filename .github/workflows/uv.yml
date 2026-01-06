@@ -1,4 +1,4 @@
-name: uv build
+name: uv
 
 on: [push]
 
@@ -6,8 +6,7 @@ env:
   UV_SYSTEM_PYTHON: 1
 
 jobs:
-  uv:
-    name: python
+  build:
     runs-on: ubuntu-latest
 
     steps:
