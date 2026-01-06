@@ -1,13 +1,10 @@
 name: uv build
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  [push]
 
 env:
-  UV_SYSTEM_PYTHON: 1    
+  UV_SYSTEM_PYTHON: 1
 
 jobs:
   uv-example:
@@ -33,4 +30,3 @@ jobs:
       - name: Install dependencies
         run: |
           if [ -f requirements.txt ]; then uv pip install -r requirements.txt; fi
-          
