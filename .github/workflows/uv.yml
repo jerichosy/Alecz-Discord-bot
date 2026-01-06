@@ -3,8 +3,8 @@ name: uv build
 on:
   [push]
 
-#env:
-#  UV_SYSTEM_PYTHON: 1
+env:
+  UV_SYSTEM_PYTHON: 1
 
 jobs:
   uv-example:
@@ -16,8 +16,8 @@ jobs:
 
       - name: "Set up Python"
         uses: actions/setup-python@v6
-#        with:
-#          python-version-file: ".python-version"
+        with:
+          python-version: "3.12"
 
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
