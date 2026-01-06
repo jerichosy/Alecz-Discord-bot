@@ -1,3 +1,5 @@
+# * Pylint is on trial basis here. Unsure if I will use it specifically in future Python work moving forward (uv for sure yes).
+
 name: Pylint
 
 on: [push]
