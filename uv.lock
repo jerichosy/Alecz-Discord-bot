@@ -126,75 +126,14 @@ name = "alecz-discord-bot"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
-    { name = "aiodns" },
-    { name = "aiohappyeyeballs" },
-    { name = "aiohttp" },
-    { name = "aiosignal" },
-    { name = "astunparse" },
-    { name = "attrs" },
-    { name = "braceexpand" },
-    { name = "brotli" },
-    { name = "cffi" },
-    { name = "click" },
-    { name = "colorama", marker = "sys_platform == 'win32'" },
-    { name = "discord-py" },
-    { name = "frozenlist" },
-    { name = "idna" },
-    { name = "import-expression" },
-    { name = "jishaku" },
-    { name = "multidict" },
-    { name = "orjson" },
-    { name = "propcache" },
-    { name = "pycares" },
-    { name = "pycparser" },
+    { name = "discord-py", extra = ["speed"] },
     { name = "python-dotenv" },
-    { name = "six" },
-    { name = "typing-extensions", marker = "python_full_version < '3.13'" },
-    { name = "wheel" },
-    { name = "yarl" },
 ]
 
 [package.metadata]
 requires-dist = [
-    { name = "aiodns", specifier = ">=3.6.1" },
-    { name = "aiohappyeyeballs", specifier = "==2.6.1" },
-    { name = "aiohttp", specifier = "==3.13.3" },
-    { name = "aiosignal", specifier = "==1.4.0" },
-    { name = "astunparse", specifier = "==1.6.3" },
-    { name = "attrs", specifier = "==23.2.0" },
-    { name = "braceexpand", specifier = "==0.1.7" },
-    { name = "brotli", specifier = "==1.2.0" },
-    { name = "cffi", specifier = "==1.16.0" },
-    { name = "click", specifier = "==8.1.7" },
-    { name = "colorama", marker = "sys_platform == 'win32'", specifier = "==0.4.6" },
-    { name = "discord-py", specifier = "==2.3.2" },
-    { name = "frozenlist", specifier = "==1.4.1" },
-    { name = "idna", specifier = "==3.7" },
-    { name = "import-expression", specifier = "==1.1.4" },
-    { name = "jishaku", specifier = "==2.5.2" },
-    { name = "multidict", specifier = "==6.0.5" },
-    { name = "orjson", specifier = "==3.10.2" },
-    { name = "propcache", specifier = "==0.3.2" },
-    { name = "pycares", specifier = "==4.9.0" },
-    { name = "pycparser", specifier = "==2.22" },
-    { name = "python-dotenv", specifier = "==1.0.1" },
-    { name = "six", specifier = "==1.16.0" },
-    { name = "typing-extensions", marker = "python_full_version < '3.13'", specifier = "==4.14.1" },
-    { name = "wheel", specifier = "==0.45.1" },
-    { name = "yarl", specifier = "==1.20.1" },
-]
-
-[[package]]
-name = "astunparse"
-version = "1.6.3"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "six" },
-    { name = "wheel" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/f3/af/4182184d3c338792894f34a62672919db7ca008c89abee9b564dd34d8029/astunparse-1.6.3.tar.gz", hash = "sha256:5ad93a8456f0d084c3456d059fd9a92cce667963232cbf763eac3bc5b7940872", size = 18290, upload-time = "2019-12-22T18:12:13.129Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/2b/03/13dde6512ad7b4557eb792fbcf0c653af6076b81e5941d36ec61f7ce6028/astunparse-1.6.3-py2.py3-none-any.whl", hash = "sha256:c2652417f2c8b5bb325c885ae329bdf3f86424075c4fd1a128674bc6fba4b8e8", size = 12732, upload-time = "2019-12-22T18:12:11.297Z" },
+    { name = "discord-py", extras = ["speed"], specifier = "==2.3.2" },
+    { name = "python-dotenv", specifier = ">=1.2.1" },
 ]
 
 [[package]]
@@ -204,15 +143,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/e3/fc/f800d51204003fa8ae392c4e8278f256206e7a919b708eef054f5f4b650d/attrs-23.2.0.tar.gz", hash = "sha256:935dc3b529c262f6cf76e50877d35a4bd3c1de194fd41f47a2b7ae8f19971f30", size = 780820, upload-time = "2023-12-31T06:30:32.926Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/e0/44/827b2a91a5816512fcaf3cc4ebc465ccd5d598c45cefa6703fcf4a79018f/attrs-23.2.0-py3-none-any.whl", hash = "sha256:99b87a485a5820b23b879f04c2305b44b951b502fd64be915879d77a7e8fc6f1", size = 60752, upload-time = "2023-12-31T06:30:30.772Z" },
-]
-
-[[package]]
-name = "braceexpand"
-version = "0.1.7"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/54/93/badd4f5ccf25209f3fef2573073da9fe4a45a3da99fca2f800f942130c0f/braceexpand-0.1.7.tar.gz", hash = "sha256:e6e539bd20eaea53547472ff94f4fb5c3d3bf9d0a89388c4b56663aba765f705", size = 7777, upload-time = "2021-05-07T13:49:07.323Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/fa/93/e8c04e80e82391a6e51f218ca49720f64236bc824e92152a2633b74cf7ab/braceexpand-0.1.7-py2.py3-none-any.whl", hash = "sha256:91332d53de7828103dcae5773fb43bc34950b0c8160e35e0f44c4427a3b85014", size = 5923, upload-time = "2021-05-07T13:49:05.146Z" },
 ]
 
 [[package]]
@@ -275,27 +205,6 @@ wheels = [
 ]
 
 [[package]]
-name = "click"
-version = "8.1.7"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "colorama", marker = "sys_platform == 'win32'" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/96/d3/f04c7bfcf5c1862a2a5b845c6b2b360488cf47af55dfa79c98f6a6bf98b5/click-8.1.7.tar.gz", hash = "sha256:ca9853ad459e787e2192211578cc907e7594e294c7ccc834310722b41b9ca6de", size = 336121, upload-time = "2023-08-17T17:29:11.868Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/00/2e/d53fa4befbf2cfa713304affc7ca780ce4fc1fd8710527771b58311a3229/click-8.1.7-py3-none-any.whl", hash = "sha256:ae74fb96c20a0277a1d615f1e4d73c8414f5a98db8b799a7931d1582f3390c28", size = 97941, upload-time = "2023-08-17T17:29:10.08Z" },
-]
-
-[[package]]
-name = "colorama"
-version = "0.4.6"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/d8/53/6f443c9a4a8358a93a6792e2acffb9d9d5cb0a5cfd8802644b7b1c9a02e4/colorama-0.4.6.tar.gz", hash = "sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44", size = 27697, upload-time = "2022-10-25T02:36:22.414Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/d1/d6/3965ed04c63042e047cb6a3e6ed1a63a35087b6a609aa3a15ed8ac56c221/colorama-0.4.6-py2.py3-none-any.whl", hash = "sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6", size = 25335, upload-time = "2022-10-25T02:36:20.889Z" },
-]
-
-[[package]]
 name = "discord-py"
 version = "2.3.2"
 source = { registry = "https://pypi.org/simple" }
@@ -305,6 +214,13 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/6f/cb/a360101905102684a4fe6fc543976842383f54ddeeef020959e4965c416e/discord.py-2.3.2.tar.gz", hash = "sha256:4560f70f2eddba7e83370ecebd237ac09fbb4980dc66507482b0c0e5b8f76b9c", size = 978172, upload-time = "2023-08-10T21:44:07.733Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/9c/7e/5f1b24b2ced0c4b3042204f7827b57c7dcb26d368e9b0fde8cec7853cf30/discord.py-2.3.2-py3-none-any.whl", hash = "sha256:9da4679fc3cb10c64b388284700dc998663e0e57328283bbfcfc2525ec5960a6", size = 1084904, upload-time = "2023-08-10T21:44:05.285Z" },
+]
+
+[package.optional-dependencies]
+speed = [
+    { name = "aiodns" },
+    { name = "brotli" },
+    { name = "orjson" },
 ]
 
 [[package]]
@@ -338,32 +254,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/21/ed/f86a79a07470cb07819390452f178b3bef1d375f2ec021ecfc709fc7cf07/idna-3.7.tar.gz", hash = "sha256:028ff3aadf0609c1fd278d8ea3089299412a7a8b9bd005dd08b9f8285bcb5cfc", size = 189575, upload-time = "2024-04-11T03:34:43.276Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/e5/3e/741d8c82801c347547f8a2a06aa57dbb1992be9e948df2ea0eda2c8b79e8/idna-3.7-py3-none-any.whl", hash = "sha256:82fee1fc78add43492d3a1898bfa6d8a904cc97d8427f683ed8e798d07761aa0", size = 66836, upload-time = "2024-04-11T03:34:41.447Z" },
-]
-
-[[package]]
-name = "import-expression"
-version = "1.1.4"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "astunparse" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/cf/b7/aca3c80b4efd272597754b37cf894521ac7dd82c2c2ebe58eaef494e627f/import_expression-1.1.4.tar.gz", hash = "sha256:06086a6ab3bfa528b1c478e633d6adf2b3a990e31440f6401b0f3ea12b0659a9", size = 15005, upload-time = "2020-06-09T21:08:03.402Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/de/f5/f152ddc7dde1729759bb31d2b6759102766302b1f16d013386725d37c2b2/import_expression-1.1.4-py3-none-any.whl", hash = "sha256:292099910a4dcc65ba562377cd2265487ba573dd63d73bdee5deec36ca49555b", size = 22562, upload-time = "2020-06-09T21:08:01.107Z" },
-]
-
-[[package]]
-name = "jishaku"
-version = "2.5.2"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "braceexpand" },
-    { name = "click" },
-    { name = "import-expression" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/be/88/23d3c9f3f475b7721c7845a59fa9b947ea423987d48db6a7ebe7583b7b2c/jishaku-2.5.2.tar.gz", hash = "sha256:56d38c333036e37481df5e3c9e81d6033b5097738f0d171a81e2752124f0df5c", size = 69186, upload-time = "2023-11-01T17:36:31.843Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/d8/e7/29d36891f8c1cc6c0b6cb12472494218af991252939a2bdf70dd8d9f7247/jishaku-2.5.2-py3-none-any.whl", hash = "sha256:87f34942ee44865f5ce08e36723b7c74a313d8a13a4db8a6b7cc12618cc3496c", size = 76664, upload-time = "2023-11-01T17:31:12.573Z" },
 ]
 
 [[package]]
@@ -516,20 +406,11 @@ wheels = [
 
 [[package]]
 name = "python-dotenv"
-version = "1.0.1"
+version = "1.2.1"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/bc/57/e84d88dfe0aec03b7a2d4327012c1627ab5f03652216c63d49846d7a6c58/python-dotenv-1.0.1.tar.gz", hash = "sha256:e324ee90a023d808f1959c46bcbc04446a10ced277783dc6ee09987c37ec10ca", size = 39115, upload-time = "2024-01-23T06:33:00.505Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/f0/26/19cadc79a718c5edbec86fd4919a6b6d3f681039a2f6d66d14be94e75fb9/python_dotenv-1.2.1.tar.gz", hash = "sha256:42667e897e16ab0d66954af0e60a9caa94f0fd4ecf3aaf6d2d260eec1aa36ad6", size = 44221, upload-time = "2025-10-26T15:12:10.434Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/6a/3e/b68c118422ec867fa7ab88444e1274aa40681c606d59ac27de5a5588f082/python_dotenv-1.0.1-py3-none-any.whl", hash = "sha256:f7b63ef50f1b690dddf550d03497b66d609393b40b564ed0d674909a68ebf16a", size = 19863, upload-time = "2024-01-23T06:32:58.246Z" },
-]
-
-[[package]]
-name = "six"
-version = "1.16.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/71/39/171f1c67cd00715f190ba0b100d606d440a28c93c7714febeca8b79af85e/six-1.16.0.tar.gz", hash = "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926", size = 34041, upload-time = "2021-05-05T14:18:18.379Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/d9/5a/e7c31adbe875f2abbb91bd84cf2dc52d792b5a01506781dbcf25c91daf11/six-1.16.0-py2.py3-none-any.whl", hash = "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254", size = 11053, upload-time = "2021-05-05T14:18:17.237Z" },
+    { url = "https://files.pythonhosted.org/packages/14/1b/a298b06749107c305e1fe0f814c6c74aea7b2f1e10989cb30f544a1b3253/python_dotenv-1.2.1-py3-none-any.whl", hash = "sha256:b81ee9561e9ca4004139c6cbba3a238c32b03e4894671e181b671e8cb8425d61", size = 21230, upload-time = "2025-10-26T15:12:09.109Z" },
 ]
 
 [[package]]
@@ -539,15 +420,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/98/5a/da40306b885cc8c09109dc2e1abd358d5684b1425678151cdaed4731c822/typing_extensions-4.14.1.tar.gz", hash = "sha256:38b39f4aeeab64884ce9f74c94263ef78f3c22467c8724005483154c26648d36", size = 107673, upload-time = "2025-07-04T13:28:34.16Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/b5/00/d631e67a838026495268c2f6884f3711a15a9a2a96cd244fdaea53b823fb/typing_extensions-4.14.1-py3-none-any.whl", hash = "sha256:d1e1e3b58374dc93031d6eda2420a48ea44a36c2b4766a4fdeb3710755731d76", size = 43906, upload-time = "2025-07-04T13:28:32.743Z" },
-]
-
-[[package]]
-name = "wheel"
-version = "0.45.1"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/8a/98/2d9906746cdc6a6ef809ae6338005b3f21bb568bea3165cfc6a243fdc25c/wheel-0.45.1.tar.gz", hash = "sha256:661e1abd9198507b1409a20c02106d9670b2576e916d58f520316666abca6729", size = 107545, upload-time = "2024-11-23T00:18:23.513Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/0b/2c/87f3254fd8ffd29e4c02732eee68a83a1d3c346ae39bc6822dcbcb697f2b/wheel-0.45.1-py3-none-any.whl", hash = "sha256:708e7481cc80179af0e556bbf0cc00b8444c7321e2700b8d8580231d13017248", size = 72494, upload-time = "2024-11-23T00:18:21.207Z" },
 ]
 
 [[package]]
