@@ -21,7 +21,7 @@ dependencies = [
     "idna==3.7",
     "import-expression==1.1.4",
     "jishaku==2.5.2",
-    "multidict==6.0.5",
+    "multidict==6.7.0",
     "orjson==3.10.2",
     "propcache==0.3.2",
     "pycares==4.9.0",
