@@ -3,7 +3,6 @@ import logging
 import os
 import random
 import time
-from datetime import datetime
 
 import discord
 from discord import app_commands
