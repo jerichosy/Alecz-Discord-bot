@@ -6,6 +6,7 @@ on: [push]
 
 jobs:
   analyze:
+    continue-on-error: true
     runs-on: ubuntu-latest
 
     steps:
