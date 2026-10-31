@@ -138,21 +138,8 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "discord-py", extras = ["speed"], specifier = "==2.7.1" },
-    { name = "jishaku", specifier = "==2.5.2" },
+    { name = "jishaku", specifier = "==2.7.5" },
     { name = "python-dotenv", specifier = ">=1.2.1" },
-]
-
-[[package]]
-name = "astunparse"
-version = "1.6.3"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "six" },
-    { name = "wheel" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/f3/af/4182184d3c338792894f34a62672919db7ca008c89abee9b564dd34d8029/astunparse-1.6.3.tar.gz", hash = "sha256:5ad93a8456f0d084c3456d059fd9a92cce667963232cbf763eac3bc5b7940872", size = 18290, upload-time = "2019-12-22T18:12:13.129Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/2b/03/13dde6512ad7b4557eb792fbcf0c653af6076b81e5941d36ec61f7ce6028/astunparse-1.6.3-py2.py3-none-any.whl", hash = "sha256:c2652417f2c8b5bb325c885ae329bdf3f86424075c4fd1a128674bc6fba4b8e8", size = 12732, upload-time = "2019-12-22T18:12:11.297Z" },
 ]
 
 [[package]]
@@ -363,28 +350,28 @@ wheels = [
 
 [[package]]
 name = "import-expression"
-version = "1.1.5"
+version = "2.2.1.post1"
 source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "astunparse" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/cf/12/e6749c41b342460843ce92eb069e7c2c04c040f848390b3f28eee4f161af/import_expression-1.1.5.tar.gz", hash = "sha256:9959588fcfc8dcb144a0725176cfef6c28c7db1fc2d683625025e687516d40c1", size = 18474, upload-time = "2024-05-25T01:19:36.83Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/95/dd/4c561ce20064985b2a7d3eadb4002c981c8906a4efd309a0b595acb2727a/import_expression-2.2.1.post1.tar.gz", hash = "sha256:1c831bf26bef7edf36a97b34c687b962e7abe06116c66f00e14f9a3218623d4f", size = 16044, upload-time = "2024-10-23T06:06:37.221Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/33/a2/0182936b9e6e5af59d0acdb42c6e2d51f528f3e012717db68b4431725191/import_expression-1.1.5-py3-none-any.whl", hash = "sha256:f60c3765dbf2f41928b9c6ef79d632209b6705fc8f30e281ed1a492ed026b10f", size = 20659, upload-time = "2024-05-25T01:19:33.436Z" },
+    { url = "https://files.pythonhosted.org/packages/38/92/437a1dbc58241770198dc4d966a2e6363bd684f961070623aec975cfe03f/import_expression-2.2.1.post1-py3-none-any.whl", hash = "sha256:7b3677e889816e0dbdcc7f42f4534071c54c667f32c71097522ea602f6497902", size = 23919, upload-time = "2024-10-23T06:06:35.892Z" },
 ]
 
 [[package]]
 name = "jishaku"
-version = "2.5.2"
+version = "2.7.5"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "braceexpand" },
     { name = "click" },
+    { name = "discord-py" },
     { name = "import-expression" },
+    { name = "tabulate" },
+    { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/be/88/23d3c9f3f475b7721c7845a59fa9b947ea423987d48db6a7ebe7583b7b2c/jishaku-2.5.2.tar.gz", hash = "sha256:56d38c333036e37481df5e3c9e81d6033b5097738f0d171a81e2752124f0df5c", size = 69186, upload-time = "2023-11-01T17:36:31.843Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/4d/aa/2ecc7362e2012c102921af3876801c31b73000be70a6bf442c4f141b4b14/jishaku-2.7.5.tar.gz", hash = "sha256:f61f33d4254553a8126bdeca622f995112848fca5ff145dd9a89882d9b852367", size = 76849, upload-time = "2026-04-24T11:18:01.134Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/d8/e7/29d36891f8c1cc6c0b6cb12472494218af991252939a2bdf70dd8d9f7247/jishaku-2.5.2-py3-none-any.whl", hash = "sha256:87f34942ee44865f5ce08e36723b7c74a313d8a13a4db8a6b7cc12618cc3496c", size = 76664, upload-time = "2023-11-01T17:31:12.573Z" },
+    { url = "https://files.pythonhosted.org/packages/2e/1b/1e5a758333c858c70d3f94e7e9cceee7e406ec6227ebea875b7008947165/jishaku-2.7.5-py3-none-any.whl", hash = "sha256:b7276f8c1e36c1acfae29a8bffc460e93d99723b90d75329b5698b65bed9bc3e", size = 82682, upload-time = "2026-04-24T11:17:59.476Z" },
 ]
 
 [[package]]
@@ -539,12 +526,12 @@ wheels = [
 ]
 
 [[package]]
-name = "six"
-version = "1.17.0"
+name = "tabulate"
+version = "0.10.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/94/e7/b2c673351809dca68a0e064b6af791aa332cf192da575fd474ed7d6f16a2/six-1.17.0.tar.gz", hash = "sha256:ff70335d468e7eb6ec65b95b99d3a2836546063f63acc5171de367e834932a81", size = 34031, upload-time = "2024-12-04T17:35:28.174Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/46/58/8c37dea7bbf769b20d58e7ace7e5edfe65b849442b00ffcdd56be88697c6/tabulate-0.10.0.tar.gz", hash = "sha256:e2cfde8f79420f6deeffdeda9aaec3b6bc5abce947655d17ac662b126e48a60d", size = 91754, upload-time = "2026-03-04T18:55:34.402Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl", hash = "sha256:4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274", size = 11050, upload-time = "2024-12-04T17:35:26.475Z" },
+    { url = "https://files.pythonhosted.org/packages/99/55/db07de81b5c630da5cbf5c7df646580ca26dfaefa593667fc6f2fe016d2e/tabulate-0.10.0-py3-none-any.whl", hash = "sha256:f0b0622e567335c8fabaaa659f1b33bcb6ddfe2e496071b743aa113f8774f2d3", size = 39814, upload-time = "2026-03-04T18:55:31.284Z" },
 ]
 
 [[package]]
@@ -554,15 +541,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/98/5a/da40306b885cc8c09109dc2e1abd358d5684b1425678151cdaed4731c822/typing_extensions-4.14.1.tar.gz", hash = "sha256:38b39f4aeeab64884ce9f74c94263ef78f3c22467c8724005483154c26648d36", size = 107673, upload-time = "2025-07-04T13:28:34.16Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/b5/00/d631e67a838026495268c2f6884f3711a15a9a2a96cd244fdaea53b823fb/typing_extensions-4.14.1-py3-none-any.whl", hash = "sha256:d1e1e3b58374dc93031d6eda2420a48ea44a36c2b4766a4fdeb3710755731d76", size = 43906, upload-time = "2025-07-04T13:28:32.743Z" },
-]
-
-[[package]]
-name = "wheel"
-version = "0.45.1"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/8a/98/2d9906746cdc6a6ef809ae6338005b3f21bb568bea3165cfc6a243fdc25c/wheel-0.45.1.tar.gz", hash = "sha256:661e1abd9198507b1409a20c02106d9670b2576e916d58f520316666abca6729", size = 107545, upload-time = "2024-11-23T00:18:23.513Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/0b/2c/87f3254fd8ffd29e4c02732eee68a83a1d3c346ae39bc6822dcbcb697f2b/wheel-0.45.1-py3-none-any.whl", hash = "sha256:708e7481cc80179af0e556bbf0cc00b8444c7321e2700b8d8580231d13017248", size = 72494, upload-time = "2024-11-23T00:18:21.207Z" },
 ]
 
 [[package]]
