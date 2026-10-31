@@ -6,6 +6,6 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "discord-py[speed]==2.7.1",
-    "jishaku==2.5.2",
+    "jishaku==2.7.5",
     "python-dotenv>=1.2.1",
 ]
